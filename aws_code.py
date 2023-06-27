@@ -1,6 +1,8 @@
 import boto3
 from time import sleep
 
+# Examples of AWS API code using boto3
+
 # fucntion that transcribes a french audio file to text
 def transcribe_file(file_name):
     transcribe = boto3.client("transcribe")
@@ -21,7 +23,8 @@ def transcribe_file(file_name):
     # print the result text
     print(status["TranscriptionJob"]["Transcript"]["TranscriptFileUri"])
 
-#implement a function to create a simple dynomodb table
+# This one allows you to chose various code samples with different licences (MIT, Apache ...). This will add a log into the CodeWhisperer console.
+# implement a function to create a simple dynomodb table
 def create_table():
     dynamodb = boto3.resource('dynamodb')
     table = dynamodb.create_table(
