@@ -1,6 +1,24 @@
 
 # CodeWhisperer Quick demo
 
+## How to install
+
+- [Setting up CodeWhisperer](https://docs.aws.amazon.com/codewhisperer/latest/userguide/setting-up.html):
+  - Chose your IDE
+  - Exemple with Visual Code: [Installing the AWS Toolkit for Visual Studio Code - AWS Toolkit for VS Code](https://docs.aws.amazon.com/toolkit-for-vscode/latest/userguide/setup-toolkit.html)
+  - [Authenticating with CodeWhisperer and AWS Toolkit - CodeWhisperer](https://docs.aws.amazon.com/codewhisperer/latest/userguide/codewhisperer-auth.html) as :
+    - Individual developer with builder ID (does not require an AWS account)
+    - Professional-tier developer with AWS IAM Identity Center
+    - In-console developer (using AWS Cloud 9, Lambda, or Amazon Sagemaker Studio)
+
+- Setting up this demo code:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
 ## Why ?
 
 - Shortage of developers
@@ -23,13 +41,15 @@
 
 ## Questions
 
-- [Pricing](https://aws.amazon.com/fr/codewhisperer/pricing/)
+- [Billing for CodeWhisperer](https://docs.aws.amazon.com/codewhisperer/latest/userguide/billing.html)
+  - The **individual tier** is free and easy to set up, but does not include the benefits of organizational license management
+  - The **professional tier** includes a charge for additional features. Your employer pays the bill through their company AWS account.
 - [FAQ](https://aws.amazon.com/fr/codewhisperer/faqs/)
 
 ## CodeWisperer User Guide
 
-- [What is CodeWhisperer? - CodeWhisperer](https://docs.aws.amazon.com/codewhisperer/latest/userguide/what-is-cwspr.html)
-- [Code examples - CodeWhisperer](https://docs.aws.amazon.com/codewhisperer/latest/userguide/whisper-code-examples.html)
+- [What is CodeWhisperer?](https://docs.aws.amazon.com/codewhisperer/latest/userguide/what-is-cwspr.html)
+- [Code examples](https://docs.aws.amazon.com/codewhisperer/latest/userguide/whisper-code-examples.html)
 
 ## CodeWisperer Workshops
 
@@ -45,7 +65,7 @@
 
 ## Examples
 
-- Code Whisperer reference log : type *#implement a function to create a simple dynomodb table* and enter + right arrow to get the MIT code sample
+- Code Whisperer reference log : type *#implement a function to create a simple dynomodb table* and enter + right arrow to get the MIT code sample. This will display a message in the *Codewhisperer reference log* console
 
 ```python
 #implement a function to create a simple dynomodb table
