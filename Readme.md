@@ -34,7 +34,7 @@ pip install -r requirements.txt
 - Real-time code suggestions
 - Scanning for security vulnerabilities includes for example, top 10 in the Open Worldwide Application Security Project (OWASP) standards, enforcement of crypto library and AWS security standards and best practices, and more
 - Reference tracking : refrences to sources => information about the licences
-- [Language and IDE support in Amazon CodeWhisperer - CodeWhisperer](https://docs.aws.amazon.com/codewhisperer/latest/userguide/language-ide-support.html) : 
+- [Language and IDE support in Amazon CodeWhisperer - CodeWhisperer](https://docs.aws.amazon.com/codewhisperer/latest/userguide/language-ide-support.html) :
   - High accuracy : Java, Python, JavaScript, TypeScript, C#
   - Less accuracy : Ruby, Go, PHP, C++, C, Shell, Scala, Rust, Kotlin, SQL
   - IDEs : VS Code, JetBrains IDEs (IntelliJ IDEA, PyCharm, CLion, GoLand, WebStorm, Rider, PhpStorm, RubyMine, DataGrip), SageMaker Studio and jupyterlab, AWS Cloud9 and AWS Lambda console
@@ -44,6 +44,7 @@ pip install -r requirements.txt
 - [Billing for CodeWhisperer](https://docs.aws.amazon.com/codewhisperer/latest/userguide/billing.html)
   - The **individual tier** is free and easy to set up, but does not include the benefits of organizational license management
   - The **professional tier** includes a charge for additional features. Your employer pays the bill through their company AWS account.
+- [Sharing your data with AWS](https://docs.aws.amazon.com/codewhisperer/latest/userguide/sharing-data.html)
 - [FAQ](https://aws.amazon.com/fr/codewhisperer/faqs/)
 
 ## CodeWisperer User Guide
@@ -98,7 +99,6 @@ def create_table():
 ```python
 import logging
 import psycopg2
-
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
