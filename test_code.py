@@ -1,17 +1,20 @@
 import csv
 import json
 
+# Take a look at the code exemple and various or code completion here :
+# https://docs.aws.amazon.com/codewhisperer/latest/userguide/whisper-code-examples.html
+
+
 # Here are few sample to see how code suggestions work
 
-# just typing the function name
-def bubblesort(list):
-    for i in range(len(list)):
-        for j in range(len(list)-1):
-            if list[j] > list[j+1]:
-                list[j], list[j+1] = list[j+1], list[j]
-    return list
+# USUAL EVERY DAY FUNCTIONS
+# a function that does a bubble sort on a list of numbers
+def bubble_sort(numbers):
+    for i in range(len(numbers)):
+        for j in range(len(numbers) - i - 1):
+            if numbers[j] > numbers[j + 1]:
+                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
 
-print(bubblesort([10,1,34,2,56,12,7,1,1,4,5,7,32]))
 
 # a function that converts a json file to a csv file
 # json keys are converted to csv columns
@@ -40,9 +43,29 @@ def display_image(image_file):
     im.show()
 
 # Try
-# #a recursive function that sorts a list of numbers
-# #a function that calls the tomtom api ...    
+#a recursive function that sorts a list of numbers
+def sort_list(numbers):
+    if len(numbers) <= 1:
+        return numbers
+    else:
+        return sort_list(numbers[1:]) + [numbers[0]]
 
 
+# CALL EXTERNAL APIS 
 
-    
+# a function that calls the tomtom api to get a route between two locations
+def get_route(origin, destination):
+    import tomtom
+    client = tomtom.TomTomClient("YOUR_API_KEY")
+    response = client.directions_between(origin, destination)
+    return response
+
+
+# a function that calls weather forcast in paris at a past date using pyowm
+def get_weather_forecast(date):
+    import pyowm
+    owm = pyowm.OWM("YOUR_API_KEY")
+    observation = owm.weather_at_date(date)
+    return observation
+
+

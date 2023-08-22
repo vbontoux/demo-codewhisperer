@@ -3,6 +3,19 @@ from time import sleep
 
 # Examples of AWS API code using boto3
 
+# function to upload a file to S3 using server side encryption
+def upload_file_to_s3(file_name, bucket, object_name=None):
+    # If S3 object_name was not specified, use file_name
+    if object_name is None:
+        object_name = file_name
+
+    # Upload the file
+    s3_client = boto3.client('s3')
+    response = s3_client.upload_file(file_name, bucket, object_name, ExtraArgs={'ServerSideEncryption': 'AES256'})
+
+    return response
+
+
 # fucntion that transcribes a french audio file to text
 def transcribe_file(file_name):
     transcribe = boto3.client("transcribe")
@@ -25,10 +38,10 @@ def transcribe_file(file_name):
 
 # This one allows you to chose various code samples with different licences (MIT, Apache ...). This will add a log into the CodeWhisperer console.
 # implement a function to create a simple dynomodb table
-def create_table():
+def create_table(table_name):
     dynamodb = boto3.resource('dynamodb')
     table = dynamodb.create_table(
-        TableName='my-first-table',
+        TableName=table_name,
         KeySchema=[
             {
                 'AttributeName': 'id',
@@ -46,5 +59,4 @@ def create_table():
             'WriteCapacityUnits': 10
         }
     )
-    return table
-
+    print(table)
