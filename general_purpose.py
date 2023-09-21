@@ -70,8 +70,32 @@ def get_route(origin, destination):
 # a function that calls weather forcast in paris at a past date using pyowm
 def get_weather_forecast(date):
     import pyowm
+import torch.nn as nn
     owm = pyowm.OWM("YOUR_API_KEY")
     observation = owm.weather_at_date(date)
     return observation
 
 
+# define torch nn.module with 1 input layer, 3 hidden layers, and 1 output layer
+
+    
+# define function to train model
+
+
+## in this example, we will see how additional code in our project affects the responses. Open the file python/prompts/example6a.py.
+# function to verify email address
+import re
+def verify_email(email):
+    if re.match(r"[^@]+@[^@]+\.[^@]+", email):
+        return True
+    else:
+        return False
+    
+import boto3
+# Create SES client
+ses = boto3.client('ses')
+# function to verify email address
+def verify_email(email):
+    response = ses.verify_email_identity(EmailAddress=email)
+    return response
+    
