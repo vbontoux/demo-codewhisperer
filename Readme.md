@@ -111,3 +111,7 @@ def connect():
         password="XXXXXXXX"
     )
 ```
+
+## Workshops
+
+- [Amazon CodeWhisperer Immersion Day](https://catalog.us-east-1.prod.workshops.aws/workshops/6838a1a5-4516-4153-90ce-ac49ca8e1357/en-US)
