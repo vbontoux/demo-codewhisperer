@@ -35,6 +35,12 @@ def csv_to_json(csv_file, json_file):
     with open(json_file, 'w') as f:
         json.dump(data, f)
 
+# Auto complete (type enter at the end of the line of an item)
+fake_users = [
+    { "name": "User 1", "id": "user1", "city": "San Francisco", "state": "CA" },
+    { "name": "User 2", "id": "user2", "city": "Tampa", "state": "FL" },
+    { "name": "User 3", "id": "user3", "city": "New York", "state": "NY" },
+]
 
 # a function that displays an image
 def display_image(image_file):
