@@ -1,63 +1,41 @@
 import csv
 import json
 
-# Take a look at the code exemple and various or code completion here :
-# https://docs.aws.amazon.com/codewhisperer/latest/userguide/whisper-code-examples.html
+# 1/ single line completion 
+listofvegetables = ["carrot", "cabbage", "broccoli", "potato"]
+for i in listofvegetables:
+    print(i)
 
+listofdictsofawsregions = [
+    {"name": "us-east-1", "region": "us-east-1"}, 
+    {"name": "us-east-2", "region": "us-east-2"},
+    {"name": "us-west-1", "region": "us-west-1"},
+    {"name": "us-west-2", "region": "us-west-2"},
+    {"name": "ca-central-1", "region": "ca-central-1"},
+    {"name": "eu-central-1", "region": "eu-central-1"},
+    {"name": "eu-west-1", "region": "eu-west-1"},
+]
 
-# Here are few sample to see how code suggestions work
+# 2/ multi line completion
 
-# USUAL EVERY DAY FUNCTIONS
-# a function that does a bubble sort on a list of numbers
+# a fucntion that reads a csv file and returns a panda dataframe
+# remove the email collumn from the dataframe
+import pandas as pd
+def read_csv_file(filepath):
+    df = pd.read_csv(filepath)
+    return df.drop(columns=["email"])
+
+# 3/ more complex patterns
+
+# a function that does the bubble sort on a list of numbers
 def bubble_sort(numbers):
-    for i in range(len(numbers)):
+    for i in range(len(numbers) - 1):
         for j in range(len(numbers) - i - 1):
             if numbers[j] > numbers[j + 1]:
                 numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
+    return numbers
 
-
-# a function that converts a json file to a csv file
-# json keys are converted to csv columns
-def json_to_csv(json_file, csv_file):
-    with open(json_file, 'r') as f:
-        data = json.load(f)
-    with open(csv_file, 'w') as f:
-        writer = csv.writer(f)
-        for key, value in data.items():
-            writer.writerow([key, value])
-
-# a function that converts a csv file to a json file
-# csv columns are converted to json keys
-def csv_to_json(csv_file, json_file):
-    with open(csv_file, 'r') as f:
-        reader = csv.reader(f)
-        data = dict(reader)
-    with open(json_file, 'w') as f:
-        json.dump(data, f)
-
-# Auto complete (type enter at the end of the line of an item)
-fake_users = [
-    { "name": "User 1", "id": "user1", "city": "San Francisco", "state": "CA" },
-    { "name": "User 2", "id": "user2", "city": "Tampa", "state": "FL" },
-    { "name": "User 3", "id": "user3", "city": "New York", "state": "NY" },
-]
-
-# a function that displays an image
-def display_image(image_file):
-    from PIL import Image
-    im = Image.open(image_file)
-    im.show()
-
-# Try
-#a recursive function that sorts a list of numbers
-def sort_list(numbers):
-    if len(numbers) <= 1:
-        return numbers
-    else:
-        return sort_list(numbers[1:]) + [numbers[0]]
-
-
-# CALL EXTERNAL APIS 
+# 4/ Common API calls
 
 # a function that calls the tomtom api to get a route between two locations
 def get_route(origin, destination):
@@ -67,19 +45,27 @@ def get_route(origin, destination):
     return response
 
 
-# a function that calls weather forcast in paris at a past date using pyowm
-def get_weather_forecast(date):
-    import pyowm
-import torch.nn as nn
-    owm = pyowm.OWM("YOUR_API_KEY")
-    observation = owm.weather_at_date(date)
-    return observation
+# 5/ Show a Code Reference log
 
 
-# define torch nn.module with 1 input layer, 3 hidden layers, and 1 output layer
 
-    
+# 6/ Other examples
+
+# define torch nn.module with 1 input layer, 3 hidden layers, and 1 output layer  
 # define function to train model
+import torch
+def train_model(model, train_loader, optimizer, criterion, epochs):
+    for epoch in range(epochs):
+        for batch_idx, (data, target) in enumerate(train_loader):
+            # forward pass
+            output = model(data)
+            loss = criterion(output, target)
+            # backward pass
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+        print(f"Epoch {epoch+1}/{epochs} - Loss: {loss.item():.4f}")
+    return mode
 
 
 ## in this example, we will see how additional code in our project affects the responses. Open the file python/prompts/example6a.py.
