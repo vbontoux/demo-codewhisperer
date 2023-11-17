@@ -18,7 +18,7 @@ listofdictsofawsregions = [
 
 # 2/ multi line completion
 
-# a fucntion that reads a csv file and returns a panda dataframe
+# a function that reads a csv file and returns a panda dataframe
 # remove the email collumn from the dataframe
 import pandas as pd
 def read_csv_file(filepath):
@@ -35,14 +35,42 @@ def bubble_sort(numbers):
                 numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
     return numbers
 
+# Smalest Multiple
+# Create a function that returns the smallest positive number that is evenly divisible by all of the numbers from 1 to n.
+def smallest_positive_number(n):
+    for i in range(1, n + 1):
+        if n % i == 0:
+            return i
+        
+# 10001st prime number
+# Create a function to find the 10001st prime number
+        
+
+# Write code to convert numbers to Roman numerals
+def convert_to_roman(number):
+    roman_numerals = {
+        1: "I",
+        5: "V",
+        10: "X",
+        50: "L",
+        100: "C",
+        500: "D",
+        1000: "M"
+    }
+    roman_numeral = ""
+    for key, value in roman_numerals.items():
+        while number >= key:
+            roman_numeral += value
+            number -= key
+    return roman_numeral
+
+
+convert_to_roman(199)
+
+
 # 4/ Common API calls
 
 # a function that calls the tomtom api to get a route between two locations
-def get_route(origin, destination):
-    import tomtom
-    client = tomtom.TomTomClient("YOUR_API_KEY")
-    response = client.directions_between(origin, destination)
-    return response
 
 
 # 5/ Show a Code Reference log
@@ -53,19 +81,6 @@ def get_route(origin, destination):
 
 # define torch nn.module with 1 input layer, 3 hidden layers, and 1 output layer  
 # define function to train model
-import torch
-def train_model(model, train_loader, optimizer, criterion, epochs):
-    for epoch in range(epochs):
-        for batch_idx, (data, target) in enumerate(train_loader):
-            # forward pass
-            output = model(data)
-            loss = criterion(output, target)
-            # backward pass
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
-        print(f"Epoch {epoch+1}/{epochs} - Loss: {loss.item():.4f}")
-    return mode
 
 
 ## in this example, we will see how additional code in our project affects the responses. Open the file python/prompts/example6a.py.
@@ -76,12 +91,20 @@ def verify_email(email):
         return True
     else:
         return False
-    
-import boto3
-# Create SES client
-ses = boto3.client('ses')
-# function to verify email address
-def verify_email(email):
-    response = ses.verify_email_identity(EmailAddress=email)
-    return response
-    
+
+#create a function to get user age and name  and print happy birthday
+def get_user_info():
+    name = input("Enter your name: ")
+    age = input("Enter your age: ")
+    return name, age
+
+# Create a function to make an api call to the joke.com api and return a joke
+import requests
+def get_joke():
+    response = requests.get("https://v2.jokeapi.dev/joke/Any")
+    if response.status_code == 200:
+        joke = response.json()
+        if joke["type"] == "single":
+            return joke["joke"]
+        else:
+            return joke["setup"] + " " + joke["delivery"]

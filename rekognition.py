@@ -1,8 +1,7 @@
 import boto3
 from time import sleep
 
-# a function that get the celebrity name from rekognition
-
+# a function that use rekognition to  get the celebrity name an image in S3
 def get_celebrity_name(file_name):
     rekognition = boto3.client("rekognition")
     response = rekognition.recognize_celebrities(

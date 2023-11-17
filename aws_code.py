@@ -3,6 +3,9 @@ from time import sleep
 
 # Examples of AWS API code using boto3
 
+# function to iterate over an S3 bucket and send the files to a lambda function
+
+
 # function to upload a file to S3 using server side encryption
 def upload_file_to_s3(file_name, bucket, object_name=None):
     # If S3 object_name was not specified, use file_name
@@ -15,8 +18,8 @@ def upload_file_to_s3(file_name, bucket, object_name=None):
 
     return response
 
-
-# fucntion that transcribes a french audio file to text
+ 
+#fucntion that transcribes a french audio file to text
 def transcribe_file(file_name):
     transcribe = boto3.client("transcribe")
     transcribe.start_transcription_job(
@@ -60,3 +63,16 @@ def create_table(table_name):
         }
     )
     print(table)
+
+
+# a function that requests AWS elasticache to get an object from a key
+def get_elasticache_object(key):
+    client = boto3.client('elasticache')
+    response = client.get_object(
+        CacheClusterId='my-cache-cluster',
+        Key=key
+    )
+    return response
+
+
+   
